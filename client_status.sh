@@ -23,7 +23,7 @@ get_first_available_port()
 			break
 		fi
 	done
-	return $LPORT
+	echo $LPORT
 }
 
 if [ "$1" = "" ]
@@ -33,34 +33,42 @@ then
 	exit 1 
 fi
 
-export UUID=$1
+export UUID=`echo $1 | sed -e "s/\/dev\///g"`
 export PID=`ps ax | grep client | grep TCP | grep $UUID | awk '{ print $1 }'`
-export PORT=`ps ax | grep client | grep TCP | grep $UUID | sed -e 's/.*client//g' | awk '{ print $2 }'`
+export LPORT=`ps ax | grep client | grep TCP | grep $UUID | sed -e 's/.*client//g' | awk '{ print $2 }'`
 
-if [ "$PORT" = "" ]
+if [ "$LPORT" = "" ]
 then
 	
 	#
 	# get the private network ip address
 	#	
-	IP=`get_vpc_iface_ip`
-	if [ "$IP" = "" ]
- 	then
-		IP="127.0.0.1"
-	fi
+	#IP=`get_vpc_iface_ip`
+	#if [ "$IP" = "" ]
+ 	#then
+	#	IP="127.0.0.1"
+	#fi
 
 	#
 	# get the first unused TCP port 
 	#
-	get_first_available_port
-	LPORT=$?
+	LPORT=`get_first_available_port`
 
 	#
 	# launch client
 	#
-	LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client "$UUID $PORT $REMOTE_PORT TCP" >/dev/null 2>&1 &
+	LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $UUID $LPORT $REMOTE_PORT TCP >/dev/null 2>&1 &
+	#echo LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client "$UUID $LPORT $REMOTE_PORT TCP" 
+
+else
+
+	if [ "$2" = "kill" ]
+	then
+		echo "killing $UUID client ..."
+		kill -TERM $PID
+	fi
 
 fi
 
-echo "$IP $PORT"
+echo "$LPORT"
 
