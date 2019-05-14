@@ -1,0 +1,5 @@
+*.o
+device
+client
+.vscode
+
