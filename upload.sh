@@ -12,12 +12,5 @@ scp $SF mntfrcud@iotc-nod4:
 echo ""
 echo "Excecute on the 4 target machines:"
 echo "  1) tar -xzf $SF"
-echo "  2) sudo ./install_supervisor.sh"
-echo ""
-
-
-#ssh mntfrcud@iotc-nod1 -- tar -xzf $SF && ./install_supervisor.sh
-#ssh mntfrcud@iotc-nod2 -- tar -xzf $SF && ./install_supervisor.sh
-#ssh mntfrcud@iotc-nod3 -- tar -xzf $SF && ./install_supervisor.sh
-#ssh mntfrcud@iotc-nod4 -- tar -xzf $SF && ./install_supervisor.sh
+echo "  2) sudo cp -f client /usr/local/urmetiotc_x86_64/bin/ && sudo cp -f *.sh /usr/local/urmetiotc_x86_64/bin/ && sudo chmod +x /usr/local/urmetiotc_x86_64/bin/client*" 
 
