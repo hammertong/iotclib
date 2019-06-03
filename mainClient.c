@@ -32,13 +32,13 @@ const char *getRemoteSdp(char *uid, char *localSdp, void *userData) {
 	sprintf(pathAndGet, "/tool/webapi/private/index.php/iotc_connect/?uid=%s&ice_sdp_cli=%s", uid, sdpEncoded);
 	free(sdpEncoded);
 
-	//httpsPost("www.cloud.urmet.com", 443, pathAndGet, &response,
-	//		NULL, NULL, NULL, NULL,
-	//		"httpd_username=dileo&httpd_password=dileo");
-
-	httpsPost("www.cloud.elkron.com", 443, pathAndGet, &response,
+	httpsPost("www.cloud.urmet.com", 443, pathAndGet, &response,
 			NULL, NULL, NULL, NULL,
 			"httpd_username=dileo&httpd_password=dileo");
+
+	//httpsPost("www.cloud.elkron.com", 443, pathAndGet, &response,
+	//		NULL, NULL, NULL, NULL,
+	//		"httpd_username=dileo&httpd_password=dileo");
 
 
 	free(pathAndGet);

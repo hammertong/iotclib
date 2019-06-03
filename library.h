@@ -37,8 +37,8 @@
 #include <ifaddrs.h>
 #endif
 
-//#define SERVER_NAME "www.cloud.urmet.com"
-#define SERVER_NAME "www.cloud.elkron.com"
+#define SERVER_NAME "www.cloud.urmet.com"
+//#define SERVER_NAME "www.cloud.elkron.com"
 
 /**
  * @brief The context used for all connection operations
