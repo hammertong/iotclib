@@ -3,4 +3,5 @@ device
 client
 .vscode
 setup_*gz
+libiotcandroid.a
 
