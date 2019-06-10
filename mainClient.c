@@ -93,7 +93,7 @@ int testClient(char *uid, int localPort, int remotePort, TunnelProtocols proto) 
 	while(true) {
 
 		IotcCtx *ctx = iotcInitClient();
-		
+
 		if (ctx == NULL) {
 			printf("Cannot initialize client");
 			return -1;
@@ -104,13 +104,13 @@ int testClient(char *uid, int localPort, int remotePort, TunnelProtocols proto) 
 
 		printf("Connecting to %s...\n", uid);
 		iotcAgent = iotcConnect(
-				ctx, 
-				uid, 
-				"35.195.29.62", 
-				"admin", 
+				ctx,
+				uid,
+				"35.195.29.62",
+				"admin",
 				"iotc$urm_2016",
-				getRemoteSdp, 
-				statusCb, 
+				getRemoteSdp,
+				statusCb,
 				NULL);
 
 		while(iotcAgent != NULL) sleep(1);
