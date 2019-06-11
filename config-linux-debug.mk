@@ -1,7 +1,7 @@
 PREFIX=/usr/local/urmetiotc_x86_64
 CC=gcc
 CROSS=
-CFLAGS=-DDEBUG -DSERVER_NAME='"www.cloud.elkron.com"' -DWEB_SERVER_URL='"https://www.cloud.elkron.com"' \
+CFLAGS=-DDEBUG \
 	-I${PREFIX}/include \
 	-I${PREFIX}/include/glib/glib \
 	-I${PREFIX}/include/glib/include \

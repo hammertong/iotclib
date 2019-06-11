@@ -1,7 +1,7 @@
 #!/bin/sh
 if [ "$1" = "debug" ]
 then
-  gLD_LIBRARY_PATH=/usr/local/urmetiotc_x86_64/lib gdb --args `pwd`/device ELKI251804065901ADE6 device_certs/ELKI251804065901ADE6/
+  LD_LIBRARY_PATH=/usr/local/urmetiotc_x86_64/lib gdb --args `pwd`/device ELKI251804065901ADE6 device_certs/ELKI251804065901ADE6/
 elif [ "$1" = "memcheck" ]
 then
   LOGFILE=valgrind.log

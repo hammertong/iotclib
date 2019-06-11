@@ -13,6 +13,7 @@ then
   echo "error"
   exit 1
 fi
-LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $DEVICE $LPORT $RPORT TCP >>/tmp/client_$LPORT 2>&1 &
+#LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $DEVICE $LPORT $RPORT TCP >>/tmp/client_$LPORT 2>&1 &
+LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $DEVICE $LPORT $RPORT TCP 
 exit 0
 

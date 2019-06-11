@@ -4,4 +4,5 @@ client
 .vscode
 setup_*gz
 libiotcandroid.a
+valgrind.log
 

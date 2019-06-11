@@ -1,8 +1,7 @@
 PREFIX=/usr/local/urmetiotc_x86_64
 CC=gcc
 CROSS=
-CFLAGS=-DDEBUG \
-	-I${PREFIX}/include \
+CFLAGS=-I${PREFIX}/include \
 	-I${PREFIX}/include/glib/glib \
 	-I${PREFIX}/include/glib/include \
 	-I${PREFIX}/include/glib-2.0 \

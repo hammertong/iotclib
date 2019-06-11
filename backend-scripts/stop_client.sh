@@ -9,7 +9,7 @@ then
   echo "error"
   exit 1
 fi
-kill -TERM `ps ax | grep client | grep $1 | awk '{ print $1 }'`
 rm -f /tmp/client_$2
+kill -TERM `ps ax | grep client | grep $1 | awk '{ print $1 }'`
 exit 0
 
