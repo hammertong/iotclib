@@ -11,5 +11,6 @@ then
 fi
 rm -f /tmp/client_$2
 kill -TERM `ps ax | grep client | grep $1 | awk '{ print $1 }'`
+echo "$?"
 exit 0
 

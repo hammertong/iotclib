@@ -13,8 +13,13 @@ then
   echo "error"
   exit 1
 fi
+if [ -f "/tmp/client_$LPORT" ]
+then
+  echo "already_connected"
+  exit 1
+fi 
 LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $DEVICE $LPORT $RPORT TCP >>/tmp/client_$LPORT 2>&1 &
 #LD_LIBRARY_PATH=$BASE_PATH/lib $BASE_PATH/bin/client $DEVICE $LPORT $RPORT TCP 
-echo $LOPORT
+echo $LPORT
 exit 0
 
