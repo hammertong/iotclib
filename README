@@ -42,3 +42,21 @@ Conteggio e uso CPU dei threads
 Memory check 
 >> G_SLICE=always-malloc G_DEBUG=gc-friendly LD_LIBRARY_PATH=/usr/local/urmetiotc_x86_64/lib  valgrind -v --tool=memcheck --leak-check=full --num-callers=40 --log-file=valgrind.log `pwd`/device ELKI251804065901ADE6 device_certs/ELKI251804065901ADE6/
 
+4) TROUBLSHOOTING
+
+IOT v.0.0.1
+Opened port for ssdp description: 44755
+[DEBUG] Retrieving servers list...
+Entering main loop...
+
+(process:12148): GLib-GIO-CRITICAL **: g_socket_connection_get_socket: assertion `G_IS_SOCKET_CONNECTION (connection)' failed
+
+(process:12148): GLib-GIO-CRITICAL **: g_socket_get_fd: assertion `G_IS_SOCKET (socket)' failed
+Invalid socket. Did you create it?
+[DEBUG] Cannot prepare Https Send
+[DEBUG] Web servers response HTTP[-1]
+webDeviceGetServers ERROR
+
+
+
+
