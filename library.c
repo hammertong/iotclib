@@ -361,7 +361,7 @@ IOTC_PRIVATE gboolean restartSSDPServerCb(gpointer userData) {
 IOTC_PRIVATE void manageSSDPServer(IotcCtx *ctx) {
 	// Roby: originale
 	if(!startSSDPServer(ctx->gloop, "DigitalSecurityCamera", "schemas-urmet-com", "Camera", "URMET",
-			"https://www.cloud.urmet.com", "Model 0", "0.0.1", "", "00000000000000000001", ctx->uid))
+			WEBSERVICE_ENDPOINT, "Model 0", "0.0.1", "", "00000000000000000001", ctx->uid))
 		g_timeout_add_seconds(5, &restartSSDPServerCb, ctx);
 
 	//Roby new

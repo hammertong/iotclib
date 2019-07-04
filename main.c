@@ -340,9 +340,15 @@ int main(int argc, char *argv[]) {
 //	testMqtt();
 //	testIce();
 
+	printf("Version %s\n", VERSION);
+	printf("Generic server: %s\n", SERVER_NAME);	
+	printf("Webservices: %s\n", WEBSERVICE_ENDPOINT);
+
 	if(strstr(argv[0], "device") != 0) {
 		return testDevice(argc, argv);
 	} else if(strstr(argv[0], "client") != 0) {
+
+		printf("Ice server: %s\n", ICE_SERVER);		
 		if(argc != 5 || strlen(argv[1]) > 20 ||
 				(strstr(argv[4], "TCP") == NULL && strstr(argv[4], "RTSP") == NULL)) {
 			printf("Usage:\n\t%s UID L_PORT R_PORT MODE\n\n\tUID: an alphanumeric string of max 20 characters (example: EFY98NRY9VU1BMPKPVC1)\n\tL_PORT: the port on localhost\n\tR_PORT: the port of the service on remote host\n\tMODE: TCP or RTSP (upper-case)\n", argv[0]);

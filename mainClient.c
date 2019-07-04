@@ -32,9 +32,9 @@ const char *getRemoteSdp(char *uid, char *localSdp, void *userData) {
 	sprintf(pathAndGet, "/tool/webapi/private/index.php/iotc_connect/?uid=%s&ice_sdp_cli=%s", uid, sdpEncoded);
 	free(sdpEncoded);
 
-	httpsPost("www.cloud.urmet.com", 443, pathAndGet, &response,
+	httpsPost(WEBSERVICE_ENDPOINT, 443, pathAndGet, &response,
 			NULL, NULL, NULL, NULL,
-			"httpd_username=dileo&httpd_password=dileo");
+			WEBSERVICE_AUTHFORM);
 
 	//httpsPost("www.cloud.elkron.com", 443, pathAndGet, &response,
 	//		NULL, NULL, NULL, NULL,
@@ -102,13 +102,26 @@ int testClient(char *uid, int localPort, int remotePort, TunnelProtocols proto) 
 		printf("LAN discovery started...\n");
 		lanDiscovery(ctx, discoveryCb);
 
+#ifndef ICE_SERVER
+#define ICE_SERVER "35.195.29.62"
+#endif
+
+#ifndef ICE_SERVER_USER
+#define ICE_SERVER "admin"
+#endif
+
+#ifndef ICE_SERVER_PASS
+#define ICE_SERVER "iotc$urm_2016"
+#endif
+
+
 		printf("Connecting to %s...\n", uid);
 		iotcAgent = iotcConnect(
 				ctx,
 				uid,
-				"35.195.29.62",
-				"admin",
-				"iotc$urm_2016",
+				ICE_SERVER,
+				ICE_SERVER_USER,
+				ICE_SERVER_PASS,
 				getRemoteSdp,
 				statusCb,
 				NULL);

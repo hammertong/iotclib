@@ -37,8 +37,29 @@
 #include <ifaddrs.h>
 #endif
 
+#ifndef SERVER_NAME
 #define SERVER_NAME "www.cloud.urmet.com"
-//#define SERVER_NAME "www.cloud.elkron.com"
+#endif
+
+#ifndef WEBSERVICE_ENDPOINT
+#define WEBSERVICE_ENDPOINT "https://www.cloud.urmet.com"
+#endif
+
+#ifndef WEBSERVICE_AUTHFORM
+#define WEBSERVICE_AUTHFORM "httpd_username=dileo&httpd_password=dileo"
+#endif
+
+#ifndef ICE_SERVER
+#define ICE_SERVER "35.195.29.62"
+#endif
+
+#ifndef ICE_SERVER_USER
+#define ICE_SERVER_USER "admin"
+#endif
+
+#ifndef ICE_SERVER_PASS
+#define ICE_SERVER_PASS "iotc$urm_2016"
+#endif
 
 /**
  * @brief The context used for all connection operations
