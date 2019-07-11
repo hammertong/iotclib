@@ -446,6 +446,8 @@ IOTC_PRIVATE void *clientThreadInit(void *arg) {
 
 IOTC_PRIVATE void clientStatusChangedCb(IotcCtx *ctx, IceAgent *iceAgent, const char *status, void *userData,
 		ConnectionType connType, char *remoteIp) {
+	char filename[128];
+	FILE* fp;
 	struct connectUserData *data = (struct connectUserData *)userData;
 	void (*connectionStatusCb)(IotcAgent *iotcAgent, const char *status,
 			ConnectionType connType, char *remoteIp, void *userData) = data->connectionStatusCb;
@@ -455,12 +457,19 @@ IOTC_PRIVATE void clientStatusChangedCb(IotcCtx *ctx, IceAgent *iceAgent, const 
 			(strstr(status, "timeout") == status || strstr(status, "failed") == status)) {
 		iceStop(iceAgent);
 	}*/
+	
+	memset(filename, 0x00, sizeof(filename));
+	sprintf(filename, "/tmp/client_%s", data->uid);
+	fp = fopen (filename, "w");
+	fprintf(fp, "%s\n", status);
+	fclose(fp);
+
 }
 
 IOTC_PRIVATE void clientReadyCb(IotcCtx *ctx, IceAgent *iceAgent, char *localSdp, void *userData) {
 	struct connectUserData *data = (struct connectUserData *)userData;
 	const char *remoteSdp = NULL;
-	const char *(*getRemoteSdp)(char *uid, char *localSdp, void *userData) = data->getRemoteSdp;
+	const char *(*getRemoteSdp)(char *uid, char *localSdp, void *userData) = data->getRemoteSdp;	
 	if(getRemoteSdp != NULL)
 		remoteSdp = getRemoteSdp(data->uid, localSdp, data->userData);
 	if(remoteSdp != NULL) {

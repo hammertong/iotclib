@@ -32,7 +32,7 @@ const char *getRemoteSdp(char *uid, char *localSdp, void *userData) {
 	sprintf(pathAndGet, "/tool/webapi/private/index.php/iotc_connect/?uid=%s&ice_sdp_cli=%s", uid, sdpEncoded);
 	free(sdpEncoded);
 
-	httpsPost(WEBSERVICE_ENDPOINT, 443, pathAndGet, &response,
+	httpsPost(SERVER_NAME, 443, pathAndGet, &response,
 			NULL, NULL, NULL, NULL,
 			WEBSERVICE_AUTHFORM);
 
