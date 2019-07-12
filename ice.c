@@ -1188,7 +1188,8 @@ IOTC_PRIVATE int portMapInternal(IceAgent *iceAgent, unsigned short localPort, u
 		gboolean ret;
 		service = g_socket_service_new();
 		// do not use g_socket_listener_add_inet_port because cannot bind to "any" interface
-		GInetAddress *address = g_inet_address_new_from_string("127.0.0.1");
+		//GInetAddress *address = g_inet_address_new_from_string("127.0.0.1");
+		GInetAddress *address = g_inet_address_new_from_string("0.0.0.0");
 		GSocketAddress *socketAddress = g_inet_socket_address_new(address, localPort);
 		ret = g_socket_listener_add_address(G_SOCKET_LISTENER(service), socketAddress,
 				G_SOCKET_TYPE_STREAM, G_SOCKET_PROTOCOL_TCP, NULL, NULL, &error);

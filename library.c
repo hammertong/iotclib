@@ -51,6 +51,8 @@ struct connectUserData {
 	void *userData;
 };
 
+extern int lPort;
+
 //#ifndef IOTC_CLIENT
 IOTC_PRIVATE void connectToServers(IotcCtx *ctx);
 IOTC_PRIVATE void manageSSDPServer(IotcCtx *ctx);
@@ -445,9 +447,8 @@ IOTC_PRIVATE void *clientThreadInit(void *arg) {
 }
 
 IOTC_PRIVATE void clientStatusChangedCb(IotcCtx *ctx, IceAgent *iceAgent, const char *status, void *userData,
-		ConnectionType connType, char *remoteIp) {
-	char filename[128];
-	FILE* fp;
+		ConnectionType connType, char *remoteIp) {	
+	
 	struct connectUserData *data = (struct connectUserData *)userData;
 	void (*connectionStatusCb)(IotcAgent *iotcAgent, const char *status,
 			ConnectionType connType, char *remoteIp, void *userData) = data->connectionStatusCb;
@@ -458,11 +459,12 @@ IOTC_PRIVATE void clientStatusChangedCb(IotcCtx *ctx, IceAgent *iceAgent, const 
 		iceStop(iceAgent);
 	}*/
 	
+	char filename[256];
 	memset(filename, 0x00, sizeof(filename));
-	sprintf(filename, "/tmp/client_%s", data->uid);
-	fp = fopen (filename, "w");
-	fprintf(fp, "%s\n", status);
-	fclose(fp);
+	sprintf(filename, "/usr/local/urmetiotc_x86_64/bin/db_update_status.sh %s %s %d", data->uid, status, lPort);
+	printf("exec > %s\n", filename);
+	int r = system(filename);
+	printf("exec returned %d\n", r);
 
 }
 
