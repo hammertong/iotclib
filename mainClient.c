@@ -70,14 +70,27 @@ void statusCb(IotcAgent *iotcAgent, const char *status, ConnectionType connType,
 
 IotcAgent *iotcAgent = NULL;
 
+char* _uid_ = NULL;
 
 void ctrlCHandler(int sig) {
-	printf("Ctrl-C pressed! Stop agent...");
-	if(iotcAgent != NULL) {
-		iotcDisconnect(iotcAgent);
-		iotcAgent = NULL;
+	if (sig == SIGINT) {
+		printf("Ctrl-C pressed! Stop agent...");
+		if(iotcAgent != NULL) {
+			iotcDisconnect(iotcAgent);
+			iotcAgent = NULL;
+		}
+		printf("stopped\n");
 	}
-	printf("stopped\n");
+	else if (sig == SIGTERM) {
+		char filename[256];
+		memset(filename, 0x00, sizeof(filename));
+		sprintf(filename, "/usr/local/urmetiotc_x86_64/bin/db_set_offline.sh %s", _uid_);
+		printf("exec > %s\n", filename);
+		int r = system(filename);
+		printf("exec returned %d\n", r);
+		exit(0);
+	}
+	
 }
 
 
@@ -87,7 +100,10 @@ int testClient(char *uid, int localPort, int remotePort, TunnelProtocols proto) 
 	rPort = remotePort;
 	gProto = proto;
 
+	_uid_ = uid;
+
     signal(SIGINT, ctrlCHandler);
+    signal(SIGTERM, ctrlCHandler);
 
 	// listen keyboard input
 	while(true) {
