@@ -790,9 +790,9 @@ IOTC_PRIVATE void niceRecvCb(NiceAgent *agent, guint streamId, guint componentId
 #ifdef DEBUG
 					sentSocket += err;
 					if(sent < iceAgent->packetSize)
-						printf("Socket send error: partially sent [%d] [%ld]\n", err, sentSocket);
+						printf("Socket send error: partially sent [%ld] [%ld]\n", err, sentSocket);
 					else
-						printf("Socket send: sent [%d] [%ld]\n", err, sentSocket);
+						printf("Socket send: sent [%ld] [%ld]\n", err, sentSocket);
 #endif
 				}
 			}

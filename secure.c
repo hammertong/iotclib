@@ -354,7 +354,7 @@ IOTC_PRIVATE int httpsPrepareSend(struct httpsCtx *httpsCtx) {
 	if(httpsCtx->postMsg == NULL) // Http GET
 		snprintf(requestString, sizeof(requestString), "GET %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Length: 0\n\n", httpsCtx->path, VERSION, httpsCtx->host);
 	else // Http POST
-		snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %d\n\n%s", httpsCtx->path, VERSION, httpsCtx->host, strlen(httpsCtx->postMsg), httpsCtx->postMsg);
+		snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %ld\n\n%s", httpsCtx->path, VERSION, httpsCtx->host, strlen(httpsCtx->postMsg), httpsCtx->postMsg);
 	error = SSL_write(httpsCtx->ssl, requestString, strlen(requestString));
 	if(error == -1) {
 #ifdef DEBUG

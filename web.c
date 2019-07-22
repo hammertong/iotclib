@@ -241,7 +241,7 @@ IOTC_PRIVATE int httpPrepareSend(struct httpCtx *httpCtx) {
 		return -1;
 	}
 	// send request
-	snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %d\n\n%s", httpCtx->path, VERSION, httpCtx->host, strlen(httpCtx->postMsg), httpCtx->postMsg);
+	snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %ld\n\n%s", httpCtx->path, VERSION, httpCtx->host, strlen(httpCtx->postMsg), httpCtx->postMsg);
 	sent = send(httpCtx->sock, requestString, strlen(requestString), 0);
 	if(sent < strlen(requestString))
 		return -1;
@@ -381,7 +381,7 @@ int httpPost(char *host, char *path, char **response, char *postMsg) {
 	}
 	freeaddrinfo(dnsResults);
 
-	snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %d\n\n%s", path, VERSION, host, strlen(postMsg), postMsg);
+	snprintf(requestString, sizeof(requestString), "POST %s HTTP/1.1\nUser-Agent: IoTl/%s\nAccept: */*\nHost: %s\nConnection: Close\nContent-Type: application/x-www-form-urlencoded\nContent-Length: %ld\n\n%s", path, VERSION, host, strlen(postMsg), postMsg);
 
 	send(sock, requestString, strlen(requestString), 0);
 
