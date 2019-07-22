@@ -1,7 +1,7 @@
 include config-${TARGET}.mk
 
 ifdef DEBUG	
-	CFLAGS+= -g -O0 -finstrument-functions -rdynamic
+	CFLAGS+= -g3 -O0 -finstrument-functions -rdynamic
 	DEBUG=-DDEBUG=1
 else
 	DEBUG=

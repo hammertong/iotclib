@@ -465,7 +465,19 @@ IOTC_PRIVATE void clientStatusChangedCb(IotcCtx *ctx, IceAgent *iceAgent, const 
 	printf("exec > %s\n", filename);
 	int r = system(filename);
 	printf("exec returned %d\n", r);
-
+	if (!strcmp(status, "timeout") || 
+			!strcmp(status, "failed") || 
+			!strcmp(status, "offline") ) {
+#ifdef DEBUG
+		printf("CLIENT CONNECTION FAILURE !!! EXIT !!!\n");
+#endif
+		exit(1);	
+	}
+	else {
+#ifdef DEBUG		
+		printf("STATUS %s,PROCESS NEXT STATUS ...\n", status);
+#endif
+	}
 }
 
 IOTC_PRIVATE void clientReadyCb(IotcCtx *ctx, IceAgent *iceAgent, char *localSdp, void *userData) {
