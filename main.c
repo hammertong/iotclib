@@ -341,8 +341,8 @@ int main(int argc, char *argv[]) {
 //	testIce();
 
 	printf("Version %s\n", VERSION);
-	printf("Generic server: %s\n", SERVER_NAME);	
-	printf("Webservices: %s\n", WEBSERVICE_ENDPOINT);
+	printf("Web server: %s\n", SERVER_NAME);	
+	printf("CA server (4343): %s:%d\n", CA_SERVER_NAME, CA_SERVER_PORT);
 
 	if(strstr(argv[0], "device") != 0) {
 		return testDevice(argc, argv);

@@ -41,8 +41,12 @@
 #define SERVER_NAME "www.cloud.urmet.com"
 #endif
 
-#ifndef WEBSERVICE_ENDPOINT
-#define WEBSERVICE_ENDPOINT "https://www.cloud.urmet.com"
+#ifndef CA_SERVER_NAME /* CA server */
+#define CA_SERVER_NAME "www.cloud.urmet.com"
+#endif
+
+#ifndef CA_SERVER_PORT /* CA server */
+#define CA_SERVER_PORT 4343
 #endif
 
 #ifndef WEBSERVICE_AUTHFORM

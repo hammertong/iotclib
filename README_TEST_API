@@ -1,0 +1,8 @@
+
+
+uc -o json /iotc_status
+uc -o json /iotc_connect/ELKI251804065901ADE6
+uc -o json /iotc_status/ELKI251804065901ADE6
+
+while [ "" = "" ]; do date && time uc /iotc/ELKI251804065901ADE6/test.txt && sleep 5; done
+
