@@ -1,0 +1,43 @@
+COMANDI
+
+uc_env -s
+--> testelkron@www.cloud.elkron.com
+
+uc_login
+
+uc -o json /iotc_status
+uc -o json /iotc_status/TESTELK2019000000008/
+
+uc -o json /iotc_connect/TESTELK2019000000008/
+
+uc -o raw /iotc/ELKI251804065901ADE6
+
+--------------------------------------------------------------
+RISPOSTE
+
+uc -o json /iotc_status/TESTELK2019000000008
+{
+    "http_status": 200,
+    "internal_ip": "10.132.0.9",
+    "port": "50008",
+    "status": "connected",
+    "uid": "TESTELK2019000000008",
+    "your_internal_ip": "10.132.0.6"
+}
+
+--------------------------------------------------------------
+TRADUZIONE CURL 
+
+uc -o json /iotc_status/TESTELK2019000000008
+ ==>> curl -k -v -H "Content-Type: application/json" --cookie PHPSESSID=n1r3124ab371abtlc1736prs65 --cookie session=XYdzU+KnEM9X4qAHf1JK7L9OsRzPKRyqqbc7Yx3ifAOGYyAfRlmM8kGNIbROIGbOmcfX8hYfNj6SN1RLtKRmP7Twz0rJcrzhGJtm223t+Y51jqW09AZk6vbpoccM16XKRajwt48hHj4= -X GET https://www.cloud.elkron.com/tool/multiapi/private/iotc_status/ELKI251804065901ADE6
+
+uc -o json /iotc_connect/TESTELK2019000000008
+ ==> curl -k -v -H "Content-Type: application/json" --cookie PHPSESSID=n1r3124ab371abtlc1736prs65 --cookie session=XYdzU+KnEM9X4qAHf1JK7L9OsRzPKRyqqbc7Yx3ifAOGYyAfRlmM8kGNIbROIGbOmcfX8hYfNj6SN1RLtKRmP7Twz0rJcrzhGJtm223t+Y51jqW09AZk6vbpoccM16XKRajwt48hHj4= -X GET https://www.cloud.elkron.com/tool/multiapi/private/iotc_connect/TESTELK2019000000008
+
+uc -o raw /iotc/ELKI251804065901ADE6
+ ==>> curl -k -v -H "Content-Type: application/json" --cookie PHPSESSID=n1r3124ab371abtlc1736prs65 --cookie session=XYdzU+KnEM9X4qAHf1JK7L9OsRzPKRyqqbc7Yx3ifAOGYyAfRlmM8kGNIbROIGbOmcfX8hYfNj6SN1RLtKRmP7Twz0rJcrzhGJtm223t+Y51jqW09AZk6vbpoccM16XKRajwt48hHj4= -X GET https://www.cloud.elkron.com/tool/multiapi/private/iotc/ELKI251804065901ADE6
+
+
+
+
+
