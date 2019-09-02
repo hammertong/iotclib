@@ -1,0 +1,15 @@
+{
+	"name":"mp700-event",
+	"uuid":"TESTELK2019000000013",
+	"data":{
+        	"id": 1,
+	        "category": 1,
+        	"tag": 1,
+       		"arg1": 1,
+	        "arg2": 2,
+       		"timestamp":"201904101029",
+       		"sectors": "10000000000000000000000000000000",
+       		"text":"Allarme impianto"
+   	}
+}
+
