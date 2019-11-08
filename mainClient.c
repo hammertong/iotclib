@@ -36,6 +36,8 @@ const char *getRemoteSdp(char *uid, char *localSdp, void *userData) {
 			NULL, NULL, NULL, NULL,
 			WEBSERVICE_AUTHFORM);
 
+//printf("********** getRemoteSdp: %s, %s\n", SERVER_NAME, pathAndGet);
+
 	//httpsPost("www.cloud.elkron.com", 443, pathAndGet, &response,
 	//		NULL, NULL, NULL, NULL,
 	//		"httpd_username=dileo&httpd_password=dileo");

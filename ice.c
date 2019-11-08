@@ -962,13 +962,15 @@ bool iceSetRemoteSdp(IceAgent *iceAgent, const char *remoteSdp) {
 			NiceCandidate *cand = NULL;
 			NiceCandidateType type;
 			gchar **tokens = g_strsplit(sdpArgv[i], ",", 5);
+
 			for(j=0; tokens[j]; j++);
 			if(j != 5) {
 				g_strfreev(tokens);
 #ifdef DEBUG
-				printf("ICE agent cannot split remote candidate\n");
+				printf("warning: ICE agent cannot split remote candidate: %s\n", sdpArgv[i]);
 #endif
-				return false;
+				//return false;
+				break;
 			}
 
 			for(j=0; j<G_N_ELEMENTS(candidateTypeName); j++) {
