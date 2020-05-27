@@ -3,7 +3,9 @@ CC=gcc
 CROSS=
 CFLAGS=-DDEBUG \
 	-DSERVER_NAME="\"www.cloud.elkron.com\"" \
-	-DWEBSERVICE_AUTHFORM="\"httpd_username=testelkron&httpd_password=elkrontest\"" \
+	-DIOTC_VHOST="\"www.cloud.elkron.com\"" \
+	-DIOTC_VHOST_PORT=4343 \
+	-DWEBSERVICE_AUTHFORM="\"httpd_username=dileo&httpd_password=dileo\"" \
 	-I${PREFIX}/include \
 	-I${PREFIX}/include/glib/glib \
 	-I${PREFIX}/include/glib/include \

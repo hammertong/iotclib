@@ -119,7 +119,7 @@ struct iotcServerList *webDeviceGetServers(char *CAFile, char *CAPath, char *crt
 	struct iotcServerList *list;
 	char *response;
 
-	int code = httpsGet(CA_SERVER_NAME, CA_SERVER_PORT, "/devicegetservers/", &response,
+	int code = httpsGet(IOTC_VHOST, IOTC_VHOST_PORT, "/devicegetservers/", &response,
 			CAFile, CAPath, crtFile, keyFile);
 
 	if(code != 200) {
@@ -163,7 +163,7 @@ int webDeviceGetServersAsync(char *CAFile, char *CAPath, char *crtFile, char *ke
 	struct webCtx *webCtx = (struct webCtx *)malloc(sizeof(struct webCtx));
 	webCtx->callback = onFinish;
 	webCtx->userData = userData;
-	int ret = httpsGetAsync(CA_SERVER_NAME, CA_SERVER_PORT, "/devicegetservers/",
+	int ret = httpsGetAsync(IOTC_VHOST, IOTC_VHOST_PORT, "/devicegetservers/",
 			CAFile, CAPath, crtFile, keyFile,
 			webOnDeviceGetServersHttpsResponse, webCtx);
 	if(ret != 0)
@@ -175,7 +175,7 @@ bool webDeviceRegister(char *ip, char *CAFile, char *CAPath, char *crtFile, char
 	char *response;
 	char *postMsg = (char *)malloc(strlen(ip)+5);
 	sprintf(postMsg, "srv=%s", ip);
-	int code = httpsPost(CA_SERVER_NAME, CA_SERVER_PORT, "/deviceregister/", &response,
+	int code = httpsPost(IOTC_VHOST, IOTC_VHOST_PORT, "/deviceregister/", &response,
 			CAFile, CAPath, crtFile, keyFile, postMsg);
 	free(postMsg);
 	if(code != 200) {
