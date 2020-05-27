@@ -1,4 +1,4 @@
-create libiotcandroid.a
+create libiotc.a
 addlib libiotc-linux.a
 addlib /usr/local/urmetiotc_x86_64/lib/libsoup-2.4.a
 addlib /usr/local/urmetiotc_x86_64/lib/libnice.a

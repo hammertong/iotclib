@@ -34,7 +34,6 @@ library: $(OBJECTS)
 	@echo "Creating static library"
 	@$(AR) rcs libiotc-${TARGET}.a $^
 	@$(AR) -M < libiotc-${TARGET}.mri
-	@rm libiotc-android.a
 	
 %.o: %.c
 	@echo "Make object: $<"

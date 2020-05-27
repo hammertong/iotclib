@@ -1,7 +1,10 @@
 PREFIX=/usr/local/urmetiotc_x86_64
 CC=gcc
 CROSS=
-CFLAGS=-I${PREFIX}/include \
+CFLAGS=-DDEBUG \
+	-DSERVER_NAME="\"www.cloud.elkron.com\"" \
+	-DWEBSERVICE_AUTHFORM="\"httpd_username=testelkron&httpd_password=elkrontest\"" \
+	-I${PREFIX}/include \
 	-I${PREFIX}/include/glib/glib \
 	-I${PREFIX}/include/glib/include \
 	-I${PREFIX}/include/glib-2.0 \
