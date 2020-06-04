@@ -229,6 +229,10 @@ MqttCtx *mqttNew(char *deviceId, char *host, int port,
 	hints.ai_flags = 0;
 	hints.ai_protocol = 0;
 
+#ifdef FORCE_MQTT_BROKER
+	host = FORCE_MQTT_BROKER;
+#endif
+
 	// Resolve host name
 	error = getaddrinfo(host, NULL, &hints, &dnsResults);
 	if(error != 0) {

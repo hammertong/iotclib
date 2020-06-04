@@ -343,6 +343,9 @@ int main(int argc, char *argv[]) {
 	printf("Version %s\n", VERSION);
 	printf("Auth web server: %s\n", SERVER_NAME);
 	printf("Iotc web server: %s:%d\n", IOTC_VHOST, IOTC_VHOST_PORT);
+#ifdef FORCE_MQTT_BROKER
+	printf("!!! MQTT STATIC !!!: %s\n", FORCE_MQTT_BROKER);
+#endif	
 
 	if(strstr(argv[0], "device") != 0) {
 		return testDevice(argc, argv);

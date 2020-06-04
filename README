@@ -1,0 +1,9 @@
+to set current makefile:
+
+. setenv.sh <target>
+
+to see the list of available targets:
+./setenv.sh
+
+
+ 
