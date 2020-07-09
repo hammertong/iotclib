@@ -1,3 +1,6 @@
+VERSION='"0.0.2"'
+
+include options-config.mk
 include config-${TARGET}.mk
 
 ifdef DEBUG	
@@ -17,7 +20,6 @@ CFLAGS+= -Wall -I.
 SOURCES=$(wildcard *.c)
 OBJECTS=$(patsubst %.c, %.o, $(SOURCES))
 EXECUTABLE=device
-VERSION='"0.0.1"'
 
 all: $(EXECUTABLE)
 
