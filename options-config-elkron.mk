@@ -1,8 +1,8 @@
 OPTIONS=
 OPTIONS+=-DDEBUG
-OPTIONS+=-DSERVER_NAME="\"www.cloud.urmet.com\""
+OPTIONS+=-DSERVER_NAME="\"www.cloud.elkron.com\""
 #OPTIONS+=-DSERVER_NAME="\"elkroncloud.local\""
-OPTIONS+=-DIOTC_VHOST="\"www.cloud.urmet.com\""
+OPTIONS+=-DIOTC_VHOST="\"www.cloud.elkron.com\""
 #OPTIONS+=-DIOTC_VHOST="\"elkroncloud.local\""
 OPTIONS+=-DIOTC_VHOST_PORT=4343
 OPTIONS+=-DWEBSERVICE_AUTHFORM="\"httpd_username=dileo&httpd_password=dileo\""
